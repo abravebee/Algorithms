@@ -3,6 +3,23 @@
 import argparse
 
 def find_max_profit(prices):
+    #if prices length == 0
+        #return 0
+    #elif prices length == 1
+        #return -prices[0]
+    #else:
+        #cur_min = prices[0]
+        #cur_max_profit = 0
+
+        #loop thru range(i, prices length)
+            #if prices[i] < cur_min
+                #cur_min = prices[i]
+            #if prices[i] - cur_min >= cur_max_profit
+                #cur_max_profit = (prices[i] - cur_min)
+        #return cur_max_profit
+
+
+
     #input: list of prices
     #output: max profit from single buy/sell
     #must buy, then sell
