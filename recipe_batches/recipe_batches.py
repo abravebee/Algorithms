@@ -5,18 +5,17 @@ import math
 def recipe_batches(recipe, ingredients):
     batches = None
     if len(ingredients) < len(recipe):
-            return 0
-    if recipe.keys() != ingredients.keys(): #assumption: ingredient and recipe keys are sorted
-        return 0
-
-
-    for (k,v), (k2,v2) in zip(ingredients.items(), recipe.items()):
-        if v < v2:
-            return 0
-        else:
-            result = (v / v2)
-            if batches == None or result < batches:
-                batches = result
+        batches = 0
+    elif recipe.keys() != ingredients.keys(): #assumption: ingredient and recipe keys are sorted
+        batches = 0
+    else:
+        for (k,v), (k2,v2) in zip(ingredients.items(), recipe.items()):
+            if v < v2: #ingredients value less than recipe value
+                return 0
+            else:
+                result = (v / v2) #divide ingredients by recipe
+                if batches == None or result < batches: 
+                    batches = result
 
     return int(batches)
 
