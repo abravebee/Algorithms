@@ -3,6 +3,21 @@
 import math
 
 def recipe_batches(recipe, ingredients):
+    # batches = 0
+    # if ingredients length < recipe length (amount of keys)
+        # return batches
+    # if ingredients keys don't match recipe keys
+        # return batches
+    # compare values for each key
+        # if current ingredient val < current recipe val
+            # batches = 0
+            # return batches
+        # else
+            # divide ingredient val by recipe val
+            # if result > batches
+            # batches = result
+            # continue
+    # return batches
   pass 
 
 
