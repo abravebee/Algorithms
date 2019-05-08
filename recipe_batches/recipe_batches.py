@@ -3,23 +3,22 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-    batches = 0
+    batches = None
     if len(ingredients) < len(recipe):
-            return batches
+            return 0
     if recipe.keys() != ingredients.keys(): #assumption: ingredient and recipe keys are sorted
-        return batches
-    i = 0
-    k = 0
-    for i in range(0, len(recipe)):
-        if ingredients[k] < recipe[k]:
-            batches = 0
-            return batches
+        return 0
+
+
+    for (k,v), (k2,v2) in zip(ingredients.items(), recipe.items()):
+        if v < v2:
+            return 0
         else:
-            result = (ingredients[k] / recipe[k])
-            if result < batches:
+            result = (v / v2)
+            if batches == None or result < batches:
                 batches = result
-                k +=1
-    return batches
+
+    return int(batches)
 
     # compare values for each key
         # if current ingredient val < current recipe val
@@ -40,11 +39,17 @@ ingredients2 = { 'milk': 132, 'eggs': 48, 'flour': 51 }
 
 recipe3 = { 'milk': 100, 'butter': 50, 'flour': 5 }
 ingredients3 = { 'milk': 200, 'butter': 60, 'flour': 51 }
+
 recipe4 = { 'milk': 100, 'butter': 50, 'flour': 5 }
 ingredients4 = { 'milk': 100, 'butter': 50, 'flour': 0 }
+recipe5 = { 'milk': 100, 'butter': 50, 'flour': 5 }
+ingredients5 = { 'milk': 100, 'butter': 50, 'flour': 5 }
 
-print(recipe_batches(recipe1, ingredients1))
+print(recipe_batches(recipe5, ingredients5))
 print(recipe_batches(recipe2, ingredients2))
+
+print(recipe_batches(recipe3, ingredients3))
+print(recipe_batches(recipe4, ingredients4))
 
 if __name__ == '__main__':
   # Change the entries of these dictionaries to test 
